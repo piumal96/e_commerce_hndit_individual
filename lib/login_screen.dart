@@ -1,3 +1,5 @@
+import 'package:e_commerce_hndit_individual/ui/bottom_nav_controller.dart';
+import 'package:e_commerce_hndit_individual/ui/bottom_nav_pages/home.dart';
 import 'package:e_commerce_hndit_individual/ui/registration_screen.dart';
 import 'package:e_commerce_hndit_individual/ui/splash_screen.dart';
 import 'package:e_commerce_hndit_individual/widgets/customButton.dart';
@@ -32,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
       var authCredential = userCredential.user;
       print(authCredential!.uid);
       if(authCredential.uid.isNotEmpty){
-        Navigator.push(context, CupertinoPageRoute(builder: (_)=>SplashScreen()));
+        Navigator.push(context, CupertinoPageRoute(builder: (_)=>BottomNavController()));
       }
       else{
         Fluttertoast.showToast(msg: "Something is wrong");
