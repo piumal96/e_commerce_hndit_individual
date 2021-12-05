@@ -3,6 +3,7 @@ import 'package:e_commerce_hndit_individual/ui/bottom_nav_pages/favorite.dart';
 import 'package:e_commerce_hndit_individual/ui/bottom_nav_pages/profile.dart';
 import 'package:flutter/material.dart';
 
+import 'bottom_nav_pages/cart.dart';
 import 'bottom_nav_pages/home.dart';
 
 class BottomNavController  extends StatefulWidget {
@@ -14,7 +15,7 @@ class BottomNavController  extends StatefulWidget {
 
 class _BottomNavControllerState extends State<BottomNavController> {
 
-  final _pages =[Home(),Favorite(),Profile(),Card()];
+  final _pages =[Home(),Favorite(),Cart(),Profile()];
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
