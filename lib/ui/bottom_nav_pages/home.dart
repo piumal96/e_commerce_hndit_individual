@@ -2,7 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_commerce_hndit_individual/const/AppColors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../search_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -32,10 +34,30 @@ fetchCarouselImages() async {
 
   return qn.docs;
 }
+fetchproducts() async {
+    QuerySnapshot qn =
+    await _firestoreInstance.collection("products").get();
+    setState(() {
+      for (int i = 0; i < qn.docs.length; i++) {
+        _products.add(
+          {
+            "product-name": qn.docs[i]["product-name"],
+            "product-description": qn.docs[i]["product-description"],
+            "product-img": qn.docs[i]["product-img"],
+            "product-price": qn.docs[i]["product-price"],
+          }
+        );
+     //   print(qn.docs[i]["product-price"]);
+      }
+    });
+
+    return qn.docs;
+  }
   @override
   void initState() {
     fetchCarouselImages();
     super.initState();
+    fetchproducts();
   }
   @override
   Widget build(BuildContext context) {
@@ -49,8 +71,9 @@ fetchCarouselImages() async {
               padding: const EdgeInsets.only(left: 20,right: 20  ),
               child: Row(
                 children: [
-                  Expanded(child: TextFormField(
-                    controller: _searchController,
+                  Expanded(child:
+                  TextFormField(
+                    readOnly: true,
                     decoration: const InputDecoration(
                     fillColor: Colors.white,
 
@@ -71,6 +94,7 @@ fetchCarouselImages() async {
 
 
                     ),
+                    onTap: ()=>Navigator.push(context,CupertinoPageRoute(builder: (_)=>SearchScreen())  ),
 
 
 
@@ -130,7 +154,39 @@ fetchCarouselImages() async {
                activeSize: Size(8, 8),
                size: Size(6, 6),
              ),
-           )
+           ),
+          SizedBox(
+            height: 15,
+          ),
+           Expanded(
+             child: GridView.builder(
+                 scrollDirection: Axis.horizontal,
+                 itemCount: _products.length,
+                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                     crossAxisCount: 2, childAspectRatio: 1),
+                 itemBuilder: (_, index) {
+                   return GestureDetector(
+                     onTap: (){},//()=>Navigator.push(context, MaterialPageRoute(builder: (_)=>ProductDetails(_products[index]))),
+                     child: Card(
+                       elevation: 3,
+                       child: Column(
+                         children: [
+                           AspectRatio(
+                               aspectRatio: 2,
+                               child: Container(
+                                   color: Colors.transparent,
+                                   child: Image.network(
+                                     _products[index]["product-img"],
+                                   ))),
+                           Text("${_products[index]["product-name"]}"),
+                           Text(
+                               "${_products[index]["product-price"].toString()}"),
+                         ],
+                       ),
+                     ),
+                   );
+                 }),
+           ),
 
 
          ],
