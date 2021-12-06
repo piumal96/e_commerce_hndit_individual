@@ -24,9 +24,15 @@ class _BottomNavControllerState extends State<BottomNavController> {
 
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(
-          "Ecomerce",
-          style: TextStyle(color: Colors.black),
+        title:const Text(
+          "BuyMeLanka🛒",
+          style: TextStyle(
+              fontSize: 30,
+
+              letterSpacing: 1.2,
+              color: Colors.black,
+
+              fontWeight: FontWeight.w200,),
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,

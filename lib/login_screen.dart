@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Text(
                       "Sign In",
-                      style: TextStyle(fontSize: 22.sp, color: Colors.white),
+                      style: TextStyle(fontSize: 30.sp, color: Colors.white,fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -142,7 +142,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: TextField(
                                 controller: _emailController,
                                 decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black,),
+                                  ),
                                   hintText: "piumalkumara@gmail.com",
+
                                   hintStyle: TextStyle(
                                     fontSize: 14.sp,
                                     color: Color(0xFF414041),
@@ -166,6 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: 48.h,
                               width: 41.w,
                               decoration: BoxDecoration(
+
                                   color: AppColors.deep_orange,
                                   borderRadius: BorderRadius.circular(12.r)),
                               child: Center(
@@ -184,6 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 controller: _passwordController,
                                 obscureText: _obscureText,
                                 decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
                                   hintText: "password must be 6 character",
                                   hintStyle: TextStyle(
                                     fontSize: 14.sp,

@@ -73,46 +73,51 @@ class _HomeState extends State<Home> {
                 child: Row(
                   children: [
                     Expanded(child:
-                    TextFormField(
-                      readOnly: true,
-                      decoration: const InputDecoration(
-                        fillColor: Colors.white,
+                    Padding(
 
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide(
-                                color: Colors.blue
-                            )
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          borderSide: BorderSide(
-                              color: Colors.grey
+                      padding: const EdgeInsets.all(8.0),
+
+                      child: TextFormField(
+                        readOnly: true,
+                        decoration: const InputDecoration(
+                          fillColor: Colors.white,
+
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(
+                                  color: Colors.blue
+                              )
                           ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide: BorderSide(
+                                color: Colors.grey
+                            ),
+                          ),
+                          hintText: "Search Product here",
+                          hintStyle: TextStyle(fontSize: 15),
+
+
                         ),
-                        hintText: "Search Product here",
-                        hintStyle: TextStyle(fontSize: 15),
+                        onTap: ()=>Navigator.push(context,CupertinoPageRoute(builder: (_)=>SearchScreen())  ),
+
 
 
                       ),
-                      onTap: ()=>Navigator.push(context,CupertinoPageRoute(builder: (_)=>SearchScreen())  ),
-
-
-
                     )),
-                    GestureDetector(
-                      child: Container(
-                        height: 60,
-                        width: 60,
-                        color: AppColors.deep_orange,
-
-                        child: const Center(
-                          child: Icon(Icons.search,color: Colors.white,),
-                        ) ,
-
-                      ),
-                      onTap: (){},
-                    )
+                    // GestureDetector(
+                    //   child: Container(
+                    //     height: 60,
+                    //     width: 60,
+                    //     color: AppColors.deep_orange,
+                    //
+                    //     child: const Center(
+                    //       child: Icon(Icons.search,color: Colors.white,),
+                    //     ) ,
+                    //
+                    //   ),
+                    //   onTap: (){},
+                    // )
 
                   ],
 
@@ -161,7 +166,7 @@ class _HomeState extends State<Home> {
               ),
               Expanded(
                 child: GridView.builder(
-                    scrollDirection: Axis.horizontal,
+                    scrollDirection: Axis.vertical,
                     itemCount: _products.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2, childAspectRatio: 1),
@@ -179,9 +184,17 @@ class _HomeState extends State<Home> {
                                       child: Image.network(
                                         _products[index]["product-img"],
                                       ))),
-                              Text("${_products[index]["product-name"]}"),
+                              Text("${_products[index]["product-name"]}",
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 13, color: Colors.black54),
+
+                              ),
                               Text(
-                                  "${_products[index]["product-price"].toString()}"),
+                                  "\Rs ${_products[index]["product-price"].toString()}",
+                                   style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15, color: Colors.red),
+                              ),
+
                             ],
                           ),
                         ),

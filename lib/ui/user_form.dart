@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'bottom_nav_controller.dart';
+
 class UserForm extends StatefulWidget {
   @override
   _UserFormState createState() => _UserFormState();
@@ -47,7 +49,7 @@ class _UserFormState extends State<UserForm> {
       "dob":_dobController.text,
       "gender":_genderController.text,
       "age":_ageController.text,
-    }).then((value) => Navigator.push(context, MaterialPageRoute(builder: (_)=>SplashScreen()))).catchError((error)=>print("something is wrong. $error"));
+    }).then((value) => Navigator.push(context, MaterialPageRoute(builder: (_)=>BottomNavController()))).catchError((error)=>print("something is wrong. $error"));
   }
 
   @override
@@ -113,7 +115,7 @@ class _UserFormState extends State<UserForm> {
                     ),
                   ),
                 ),
-                myTextField("enter your age",TextInputType.number,_ageController),
+               // myTextField("enter your age",TextInputType.number,_ageController),
 
                 SizedBox(
                   height: 50.h,

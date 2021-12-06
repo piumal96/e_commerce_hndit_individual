@@ -33,11 +33,11 @@ class _SplashScreenState extends State<SplashScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "E-Commerce",
+                "BuyMeLanka🛒",
                 style: TextStyle(
                     color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 44.sp),
+                    fontWeight: FontWeight.w200,
+                    fontSize: 40.sp),
               ),
               SizedBox(
                 height: 20.h,

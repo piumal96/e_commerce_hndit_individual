@@ -17,7 +17,7 @@ class _CartState extends State<Cart> {
         child: StreamBuilder(
         stream:FirebaseFirestore.instance.collection("users-cart-items").doc(FirebaseAuth.instance.currentUser!.email).collection("items").snapshots( ), builder: (BuildContext context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.hasError) {
-            return Center(child: Text("Somthing Is Wrong"),);
+            return const Center(child: Text("Somthing Is Wrong"),);
           }
           return ListView.builder(
               itemCount: snapshot.data!.docs.length,
@@ -27,9 +27,9 @@ class _CartState extends State<Cart> {
                   elevation: 10,
                   child: ListTile(
                     leading: Text(_documentSnapshot['name']),
-                    title: Text("\Rs ${_documentSnapshot['price']}",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),),
+                    title: Text("\Rs ${_documentSnapshot['price']}",style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.red),),
                     trailing: GestureDetector(
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
                         child: Icon(Icons.remove_circle),
                       ),
                       onTap: (){

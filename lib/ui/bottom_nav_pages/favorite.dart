@@ -28,9 +28,9 @@ class _FavoriteState extends State<Favorite> {
                   elevation: 10,
                   child: ListTile(
                     leading: Text(_documentSnapshot['name']),
-                    title: Text("\Rs ${_documentSnapshot['price']}",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),),
+                    title: Text("\Rs ${_documentSnapshot['price']}",style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.red),),
                     trailing: GestureDetector(
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
                         child: Icon(Icons.remove_circle),
                       ),
                       onTap: (){
